@@ -109,7 +109,7 @@ function haberYapici(veri){
   articleDiv.setAttribute("class", "article");
 
   const h2Head=document.createElement("h2");
-  h2Head.textContent=veri.baslik;
+  h2Head.textContent=veri[0].baslik;
 
   const tah=document.createElement("p")
   tah.setAttribute("class", "tarih");
@@ -119,12 +119,13 @@ function haberYapici(veri){
   para.textContent=veri[0].ilkParagraf;
 
   const btn=document.createElement("span")
-  btn.setAttribute("class", "expandButton");
+  btn.setAttribute("class","expandButton");
   btn.textContent="+";
 
-  const classes=articleDiv.classList;
-  btn.addEventListener("click", (olay)=>{
-    
+  
+  btn.addEventListener("click",(e)=>{
+    const el=document.querySelector(".article");
+    el.classList.toggle("article-open")
   })
 
   articleDiv.appendChild(h2Head);
@@ -135,7 +136,7 @@ function haberYapici(veri){
 }
 console.log(haberYapici(data))
   /*Adım 2: Hala `haberYapici` içindeyiz, span.expandButton 'a bir click event dinleyici ekleyin.
-  Bu dinleyici div.article öğesine 'article-open' class'ını ekleyip/çıkaracak (toogle).*/
+  Bu dinleyici div.article öğesine 'article-open' class'ını ekleyip/çıkaracak (toggle).*/
 
   /*Adım 3: Fonksiyonunuzdan bir öğe döndürmeyi unutmayın.
 
