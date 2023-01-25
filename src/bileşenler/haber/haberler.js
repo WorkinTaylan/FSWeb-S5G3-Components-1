@@ -102,12 +102,42 @@ const data = [
     {üç ayrı paragraf elementi}
 
     <span class="expandButton">+</span>
-  </div>
+  </div>*/
+function haberYapici(veri){
+  const articles=document.querySelector(".articles")
+  const articleDiv=document.createElement("div");
+  articleDiv.setAttribute("class", "article");
 
-  Adım 2: Hala `haberYapici` içindeyiz, span.expandButton 'a bir click event dinleyici ekleyin.
-  Bu dinleyici div.article öğesine 'article-open' class'ını ekleyip/çıkaracak (toogle).
+  const h2Head=document.createElement("h2");
+  h2Head.textContent=veri.baslik;
 
-  Adım 3: Fonksiyonunuzdan bir öğe döndürmeyi unutmayın.
+  const tah=document.createElement("p")
+  tah.setAttribute("class", "tarih");
+  tah.textContent=veri[0].tarih;
+
+  const para=document.createElement("p");
+  para.textContent=veri[0].ilkParagraf;
+
+  const btn=document.createElement("span")
+  btn.setAttribute("class", "expandButton");
+  btn.textContent="+";
+
+  const classes=articleDiv.classList;
+  btn.addEventListener("click", (olay)=>{
+    
+  })
+
+  articleDiv.appendChild(h2Head);
+  articleDiv.appendChild(tah);
+  articleDiv.appendChild(para);
+  articleDiv.appendChild(btn);
+  articles.appendChild(articleDiv)
+}
+console.log(haberYapici(data))
+  /*Adım 2: Hala `haberYapici` içindeyiz, span.expandButton 'a bir click event dinleyici ekleyin.
+  Bu dinleyici div.article öğesine 'article-open' class'ını ekleyip/çıkaracak (toogle).*/
+
+  /*Adım 3: Fonksiyonunuzdan bir öğe döndürmeyi unutmayın.
 
   Adım 4: Fonksiyonunuzun dışında, tüm datayı döngüye sokun(loop). Bir div.article öğesi oluşturmak ve bunu div.articles içindeki DOM'a eklemek için
   her yinelemede oluşturduğunuz bileşeninizi kullanacaksınız(bknz. index.html).
