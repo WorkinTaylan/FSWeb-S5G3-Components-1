@@ -104,37 +104,47 @@ const data = [
     <span class="expandButton">+</span>
   </div>*/
 function haberYapici(veri){
-  const articles=document.querySelector(".articles")
   const articleDiv=document.createElement("div");
   articleDiv.setAttribute("class", "article");
-
+  
   const h2Head=document.createElement("h2");
-  h2Head.textContent=veri[0].baslik;
+  h2Head.textContent=veri.baslik;
+  articleDiv.appendChild(h2Head)
 
   const tah=document.createElement("p")
   tah.setAttribute("class", "tarih");
-  tah.textContent=veri[0].tarih;
+  tah.textContent=veri.tarih;
+  articleDiv.appendChild(tah)
 
-  const para=document.createElement("p");
-  para.textContent=veri[0].ilkParagraf;
+  const para1=document.createElement("p");
+  para1.textContent=veri.ilkParagraf;
+  articleDiv.appendChild(para1)
+
+  const para2=document.createElement("p");
+  para2.textContent=veri.ikinciParagraf;
+  articleDiv.appendChild(para2)
+
+  const para3=document.createElement("p");
+  para3.textContent=veri.ucuncuParagraf;
+  articleDiv.appendChild(para3)
 
   const btn=document.createElement("span")
   btn.setAttribute("class","expandButton");
   btn.textContent="+";
+  articleDiv.appendChild(btn)
 
-  
   btn.addEventListener("click",(e)=>{
-    const el=document.querySelector(".article");
-    el.classList.toggle("article-open")
+    articleDiv.classList.toggle("article-open")
   })
-
-  articleDiv.appendChild(h2Head);
-  articleDiv.appendChild(tah);
-  articleDiv.appendChild(para);
-  articleDiv.appendChild(btn);
-  articles.appendChild(articleDiv)
+  return articleDiv;
 }
-console.log(haberYapici(data))
+
+const articles=document.querySelector(".articles")
+
+data.forEach((item)=>{
+  articles.appendChild(haberYapici(item))
+})
+
   /*Adım 2: Hala `haberYapici` içindeyiz, span.expandButton 'a bir click event dinleyici ekleyin.
   Bu dinleyici div.article öğesine 'article-open' class'ını ekleyip/çıkaracak (toggle).*/
 
